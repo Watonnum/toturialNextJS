@@ -1,3 +1,4 @@
+import { type Announcement } from '@/features/announcements/types';
 import { faker } from '@faker-js/faker';
 
 export const findAll = () => {
@@ -8,4 +9,14 @@ export const findAll = () => {
   }));
 
   return Promise.resolve(announcements);
+};
+
+// =========================
+
+export const finById = async (id: Announcement['id']) => {
+  const res = await fetch(`http://localhost:5151/announcements/${id}`, {
+    cache: 'no-store',
+  });
+
+  return res.json() as Promise<Announcement>;
 };

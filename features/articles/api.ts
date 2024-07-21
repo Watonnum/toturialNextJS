@@ -1,3 +1,4 @@
+import { type Article } from '@/features/articles/types';
 import { faker } from '@faker-js/faker';
 
 export const findAll = () => {
@@ -8,4 +9,12 @@ export const findAll = () => {
   }));
 
   return Promise.resolve(articles);
+};
+
+export const findById = async (id: Article['id']) => {
+  const res = await fetch(`http://localhost:5151/articles/${id}`, {
+    next: { revalidate: 15 },
+  });
+
+  return res.json() as Promise<Article>;
 };
