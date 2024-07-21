@@ -1,27 +1,39 @@
-// 'use client';
+'use client';
 
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-// interface FooProps {
-//   count: number;
-// }
+interface Article {
+  id: number;
+  title: string;
+}
 
-// const Foo = ({ count }: FooProps) => {
-//   useEffect(() => {
-//     console.log(123);
-//   });
-//   return <div>{count}</div>;
-// };
+function useFetch<T>(url: string) {
+  const [data, setData] = useState<T[]>([]);
 
-// const HomePage = () => {
-//   const [count, setCount] = useState(0);
+  const fetchArticles = async () => {
+    const res = await fetch(url);
+    const data = await (res.json() as Promise<T[]>);
 
-//   return (
-//     <>
-//       <button onClick={() => setCount(count + 1)}>Click to Inc</button>
-//       <Foo count={count}></Foo>
-//     </>
-//   );
-// };
+    setData(data);
+  };
 
-// export default HomePage;
+  useEffect(() => {
+    fetchArticles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return data;
+}
+
+const ArticlePage = () => {
+  const articles = useFetch<Article>('http://localhost:5151/articles');
+  return (
+    <ul>
+      {articles.map((article) => (
+        <li key={article.id}>{article.title}</li>
+      ))}
+    </ul>
+  );
+};
+
+export default ArticlePage;
