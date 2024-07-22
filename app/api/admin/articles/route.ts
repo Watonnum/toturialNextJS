@@ -1,6 +1,7 @@
 import { create } from '@/features/articles/api';
 import { type CreateArticleInput } from '@/features/articles/types';
 import { add } from '@/features/articles/valirators';
+import { revalidatePath } from 'next/cache';
 
 export const POST = async (req: Request) => {
   const form = await (req.json() as Promise<CreateArticleInput>); //ดึงข้อมูล payload
@@ -16,6 +17,7 @@ export const POST = async (req: Request) => {
   }
 
   const article = await create(formValidation.data);
+  revalidatePath('/articles');
   return new Response(JSON.stringify(article), {
     status: 201,
     headers: {
