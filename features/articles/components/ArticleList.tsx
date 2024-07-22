@@ -7,13 +7,15 @@ interface ArticleListProps {
 
 const ArticleList = ({ articles }: ArticleListProps) => {
   return (
-    <ul>
-      {articles.map((article) => (
-        <li key={article.id}>
-          <Link href={`/articles/${article.id}`}>{article.title}</Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul>
+        {articles.map((article) => (
+          <li key={article.id}>
+            <Link href={`/articles/${article.id}`}>{article.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 

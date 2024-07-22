@@ -3,6 +3,15 @@ const nextConfig = {
   eslint: {
     dirs: ['.'],
   },
+  redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/leaves',
+        permanent: true, //true ถาวร,false = ชั่วคราว
+      },
+    ];
+  },
 };
 
 export default nextConfig;
