@@ -10,6 +10,11 @@ const nextConfig = {
         destination: '/leaves',
         permanent: true, //true ถาวร,false = ชั่วคราว
       },
+      {
+        source: '/admin',
+        destination: '/admin/dashboard',
+        permanent: true, //true ถาวร,false = ชั่วคราว
+      },
     ];
   },
 };
