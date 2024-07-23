@@ -4,6 +4,7 @@
     "bradlc.vscode-tailwindcss",
     "stivo.tailwind-fold",
     "esbenp.prettier-vscode",
-    "prisma.prisma"
+    "prisma.prisma",
+    "ms-azuretools.vscode-docker"
   ]
 }
