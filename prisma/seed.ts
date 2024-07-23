@@ -45,7 +45,7 @@ async function main() {
   for (let i = 0; i < numOfLeaves; i++) {
     const status: LeaveStatus = faker.helpers.arrayElement([
       'PENDING',
-      'APPROVE',
+      'APPROVED',
       'REJECTED',
     ]);
     const userId = faker.helpers.arrayElement(userIds);
