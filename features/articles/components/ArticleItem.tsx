@@ -12,20 +12,20 @@ const ArticleItem = ({ id, title, excerpt, image }: types.ArticleItem) => {
   return (
     <Link href={`/articles/${id}`}>
       <Card className="h-full">
-        <div className="relative h-[200px] w-[200px]">
+        <div className="relative h-[200px]">
           <Image
             className="object-cover"
             src={image}
             alt={title}
             fill
-            sizes="(min-width: 800px) 50vw,100vw"
+            sizes="(max-width: 800px) 50vw, 100vw"
           ></Image>
         </div>
         <CardHeader>
           <CardTitle>{truncate(title, { length: 30 })}</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>{excerpt}</p>
+          <p>{truncate(excerpt, { length: 100 })}</p>
         </CardContent>
       </Card>
     </Link>

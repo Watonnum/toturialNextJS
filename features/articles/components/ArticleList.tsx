@@ -1,9 +1,9 @@
-import { type findAll } from '@/features/articles/api';
+import type * as types from '@/features/articles/types';
 import ArticleItem from '@/features/articles/components/ArticleItem';
 import { Separator } from '@/features/shadcn/components/ui/separator';
 
 interface ArticleListProps {
-  articles: Awaited<ReturnType<typeof findAll>>;
+  articles: types.ArticleItem[];
 }
 
 const ArticleList = ({ articles }: ArticleListProps) => {
