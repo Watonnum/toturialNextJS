@@ -1,4 +1,4 @@
-import { finById } from '@/features/announcements/api';
+import { findById } from '@/features/announcements/api';
 import AnnouncementDetails from '@/features/announcements/components/AnnouncementDetails';
 
 interface AnnouncementPageProps {
@@ -8,7 +8,7 @@ interface AnnouncementPageProps {
 }
 
 const AnnouncementPage = async ({ params: { id } }: AnnouncementPageProps) => {
-  const announcement = await finById(+id);
+  const announcement = await findById(+id);
   return (
     <AnnouncementDetails announcement={announcement}></AnnouncementDetails>
   );

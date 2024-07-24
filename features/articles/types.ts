@@ -1,14 +1,4 @@
-import { type update, type add } from '@/features/articles/valirators';
-import { type z } from 'zod';
+import { type findById, type findAll } from '@/features/articles/api';
 
-export interface Article {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  image: string;
-}
-export type ArticleItem = Partial<Article>;
-
-export type CreateArticleInput = z.infer<typeof add>;
-export type UpdateArticleInput = z.infer<typeof update>;
+export type ArticleItem = Awaited<ReturnType<typeof findAll>>[number];
+export type ArticleDetail = NonNullable<Awaited<ReturnType<typeof findById>>>;
